@@ -23,58 +23,58 @@ plt.legend()
 plt.show()
 
 #Miara Euklidesowa
-def odleglosc(e1, e2):
+def distance(e1, e2):
     #uzupełnij tutaj
 
 
 #Miara Manhattan
-def odleglosc2(e1,e2):
+def distance2(e1,e2):
     #uzupełnij tutaj
 
 
-grupa = {
+group = {
     'A' : [(10, 1), (7, 6)],
     'B' : [(3, 1), (5, 4), (9,4)]
 }
-nowy = (8, 2)
+newEl = (8, 2)
 
-odl = []
-for gr, elems in grupa.items():
+dist = []
+for gr, elems in group.items():
     for elem in elems:
-        odl.append((gr, odleglosc(nowy, elem)))
+        dist.append((gr, distance(newEl, elem)))
 
-odl2 = []
-for gr, elems in grupa.items():
+dist2 = []
+for gr, elems in group.items():
     for elem in elems:
-        odl2.append((gr, odleglosc2(nowy, elem)))
+        dist2.append((gr, distance2(newEl, elem)))
 
 k = 3
-odl.sort(key=operator.itemgetter(1))
-k_najblizszych = odl[:k]
+dist.sort(key=operator.itemgetter(1))
+k_nearest = dist[:k]
 
-odl2.sort(key=operator.itemgetter(1))
-k_najblizszych2 = odl2[:k]
+dist2.sort(key=operator.itemgetter(1))
+k_nearest2 = dist2[:k]
 
-wyst = {}
-for element in k_najblizszych:
-    naj_grupa = element[0]
-    if naj_grupa in wyst.keys():
-        wyst[naj_grupa] += 1
+occur = {}
+for element in k_nearest:
+    nearGroup = element[0]
+    if nearGroup in occur.keys():
+        occur[nearGroup] += 1
     else:
-        wyst[naj_grupa] = 1
+        occur[nearGroup] = 1
 
-wyst2 = {}
-for element in k_najblizszych2:
-    naj_grupa = element[0]
-    if naj_grupa in wyst2.keys():
-        wyst2[naj_grupa] += 1
+occur2 = {}
+for element in k_nearest2:
+    nearGroup = element[0]
+    if nearGroup in occur2.keys():
+        occur2[nearGroup] += 1
     else:
-        wyst2[naj_grupa] = 1
+        occur2[nearGroup] = 1
 
-klasyfikacja = max(wyst, key=wyst.get)
+classif = max(occur, key=occur.get)
 print("Euklides:")
-print("Nowy element należy do grupy ", klasyfikacja)
+print("Nowy element należy do grupy ", classif)
 
-klasyfikacja2 = max(wyst2, key=wyst2.get)
+classif2 = max(occur2, key=occur2.get)
 print("Manhattan:")
-print("Nowy element należy do grupy ", klasyfikacja2)
+print("Nowy element należy do grupy ", classif2)
